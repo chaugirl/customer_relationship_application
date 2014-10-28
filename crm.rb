@@ -48,6 +48,7 @@ class CRM
 		end
 	end
 
+	#option 1
 	def add_new_contact
 		print "First Name: "
 		first_name = gets.chomp
@@ -63,29 +64,33 @@ class CRM
 		@rolodex.add_contact(contact)
 	end
 
+	#option 2
+	def modify_contact
+		display_all_contacts
+		puts "Enter the contact ID of the person you want to modify: "
+		contact_id_to_be_changed = gets.chomp.to_i
+		puts "Which contact attribute should be modified:\n"
+		puts "Enter 1 for first_name, 2 for last_name, 3 for email, 4 for note\n"
+		attrib_to_be_modified = gets.chomp.to_i
+		puts "Please confirm that you want #{attrib_to_be_modified} (y/n):"
+		confirmation = gets.chomp
+		if confirmation == "y"
+			#prompt to change id, first_name, last_name, email, notes
+			@rolodex.modify_contact(contact_id_to_be_changed, attrib_to_be_modified)
+		else
+			return
+		end
+	end
+
+	#option 3
 	def display_all_contacts
 		@rolodex.contacts.each do |contact|
 			puts "#{contact.id} #{contact.first_name} #{contact.last_name} #{contact.email}"
 		end
 	end
 
-	# def modify_contact
-	# 	display_all_contacts
-	# 	puts "Enter the contact ID of the person you want to modify: "
-	# 	contact_id_to_be_changed = gets.chomp
-	# 	puts "Enter a contact attribute to be modified:\n"
-	# 	puts "first_name, last_name, email, note\n"
-	# 	attrib_to_be_modified = gets.chomp
-	# 	puts "Please confirm that you want #{attrib_to_be_modified} (y/n):"
-	# 	confirmation = gets.chomp
-	# 	if confirmation == "y"
-	# 		#prompt to change id, first_name, last_name, email, notes
-	# 		@rolodex.modify_contact(contact_id_to_be_changed, attrib_to_be_modified)
-	# 	else
-	# 		return
-	# 	end
-	# end
 
+	#option 4
 	def display_contact
 		puts "Which Contact ID would you like to display?"
 		contact_id_to_be_displayed = gets.chomp.to_i
@@ -93,6 +98,7 @@ class CRM
 		puts "#{contact.id} #{contact.first_name} #{contact.last_name} #{contact.email}"
 	end
 
+	#option 5
 	def display_attribute
 		puts "Which attribute would you like to see?"
 		attrib_to_be_shown = gets.chomp.downcase

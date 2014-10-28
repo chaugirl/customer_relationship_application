@@ -1,3 +1,5 @@
+require "pry"
+
 class Rolodex
 	attr_reader :contacts
 	@@index = 1000
@@ -12,15 +14,22 @@ class Rolodex
 		@contacts << contact
 	end
 
-	# def modify_contact(contact_id_to_be_changed, attrib_to_be_modified)
-	# 	@contacts.each do |contact|
-	# 		if (@contacts.contact_id == contact_id_to_be_changed)
-	# 			puts "Changed"
-	# 		else
-	# 			puts "Go to next contact"
-	# 		end
-	# 	end
-	# end
+	def modify_contact(id, attrib)
+		@contacts.each do |contact|
+			if contact.id != id
+				next
+			else
+				case attrib 
+				when 1 then 
+					puts "What do you want to change first_name to?"
+					change = gets.chomp.to_s
+					puts "Changing #{contact.first_name} to #{change}"
+					# binding.pry
+					contact.first_name = change
+				end
+			end
+		end
+	end
 
 	def display_particular_contact(id)
 		@contacts.each do |contact|
