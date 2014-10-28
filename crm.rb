@@ -93,6 +93,34 @@ class CRM
 		puts "#{contact.id} #{contact.first_name} #{contact.last_name} #{contact.email}"
 	end
 
+	def display_attribute
+		puts "Which attribute would you like to see?"
+		attrib_to_be_shown = gets.chomp.downcase
+		case attrib_to_be_shown
+		when "id"
+			@rolodex.contacts.each do |contact|
+				puts "#{contact.id}"
+			end
+		when "first_name"
+			@rolodex.contacts.each do |contact|
+				puts "#{contact.first_name}"
+			end
+		when "last_name"
+			@rolodex.contacts.each do |contact|
+				puts "#{contact.last_name}"
+			end
+		when "email"
+			@rolodex.contacts.each do |contact|
+				puts "#{contact.email}"
+			end
+		when "note"
+			@rolodex.contacts.each do |contact|
+				puts "#{contact.note}"
+			end
+		end
+	end
+
+
 crm = CRM.new("Bitmaker Labs CRM") #crm is an instance of CRM
 crm.main_menu
 end

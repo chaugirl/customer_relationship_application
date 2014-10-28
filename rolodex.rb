@@ -32,9 +32,13 @@ class Rolodex
 		end
 	end
 
-	def display_info_by_attribute
-		
-	end
+	# def display_info_by_attribute(attrib)
+	# 	@contacts.each do |contact|
+	# 		if attrib == contacts[0]
+	# 			return contact.first_name
+	# 		end
+	# 	end
+	# end
 
 	def delete_contacts
 		
