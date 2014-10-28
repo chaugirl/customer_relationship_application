@@ -12,16 +12,24 @@ class Rolodex
 		@contacts << contact
 	end
 
-	def modify_contact(contact_id, attribute)
-		puts "Changed!"
-	end
+	# def modify_contact(contact_id_to_be_changed, attrib_to_be_modified)
+	# 	@contacts.each do |contact|
+	# 		if (@contacts.contact_id == contact_id_to_be_changed)
+	# 			puts "Changed"
+	# 		else
+	# 			puts "Go to next contact"
+	# 		end
+	# 	end
+	# end
 
-	def display_all_contacts
-		
-	end
-
-	def display_particular_contact
-		
+	def display_particular_contact(id)
+		@contacts.each do |contact|
+			if contact.id != id
+				next
+			else 
+				return contact
+			end
+		end
 	end
 
 	def display_info_by_attribute

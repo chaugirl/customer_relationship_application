@@ -69,24 +69,30 @@ class CRM
 		end
 	end
 
-	def modify_contact
-		display_all_contacts
-		puts "Enter the contact ID of the person you want to modify: "
-		contact_id_to_be_changed = gets.chomp
-		puts "Enter a contact attribute to be modified:\n"
-		puts "first_name, last_name, email, note\n"
-		attrib_to_be_modified = gets.chomp
-		puts "Please confirm that you want #{attrib_to_be_modified} (y/n):"
-		confirmation = gets.chomp
-		if confirmation == "y"
-			#prompt to change id, first_name, last_name, email, notes
-			@rolodex.modify_contact(contact_id_to_be_changed, attrib_to_be_modified)
-		else
-			return
-		end
+	# def modify_contact
+	# 	display_all_contacts
+	# 	puts "Enter the contact ID of the person you want to modify: "
+	# 	contact_id_to_be_changed = gets.chomp
+	# 	puts "Enter a contact attribute to be modified:\n"
+	# 	puts "first_name, last_name, email, note\n"
+	# 	attrib_to_be_modified = gets.chomp
+	# 	puts "Please confirm that you want #{attrib_to_be_modified} (y/n):"
+	# 	confirmation = gets.chomp
+	# 	if confirmation == "y"
+	# 		#prompt to change id, first_name, last_name, email, notes
+	# 		@rolodex.modify_contact(contact_id_to_be_changed, attrib_to_be_modified)
+	# 	else
+	# 		return
+	# 	end
+	# end
+
+	def display_contact
+		puts "Which Contact ID would you like to display?"
+		contact_id_to_be_displayed = gets.chomp.to_i
+		contact = @rolodex.display_particular_contact(contact_id_to_be_displayed)
+		puts "#{contact.id} #{contact.first_name} #{contact.last_name} #{contact.email}"
 	end
-		
-end
 
 crm = CRM.new("Bitmaker Labs CRM") #crm is an instance of CRM
 crm.main_menu
+end
